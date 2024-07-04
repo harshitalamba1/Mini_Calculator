@@ -1,90 +1,60 @@
+// declare the variables
 const result = document.querySelector(".res");
 const operator = document.querySelectorAll(".operator1");
-const num1 = document.querySelectorAll(".num"); // Separate num elements for the first number
-//const num2 = document.querySelectorAll(".num"); // Separate num elements for the second number
+const num1 = document.querySelectorAll(".num");
 const equal = document.querySelector(".equal");
 const c = document.querySelector(".clear");
 
-//let res = 0;////
-let str = "";
-let res2 = 0;
-let str2 = "";
-let instrument = null;
-fnum1();
-function fnum1() {
-  str="";
-  // let res = 0;
-  num1.forEach((n1) => {
-    n1.addEventListener("click", () => {
-      const clickedNum = n1.textContent;
-      str = str + clickedNum;
-      res = parseFloat(str);
-      // console.log(res);
-      result.innerText = res;
-    });
-    // res = parseFloat(str);
-    // result.innerText = res;
-    // str=" ";
+// define the variables
+let num_1="";
+let num_2="";
+let operator_1=null;
 
-  });
-  fop(res);
-}
+// clicked condition->before clicking the operator is num_1 and after num_2
+num1.forEach((n)=>{
+    n.addEventListener("click",()=>{
+        if(operator_1===null){
+            num_1=num_1+n.textContent;
+            result.innerText=num_1;
+        }
+        else{
+            num_2=num_2+n.textContent;
+            result.innerText=num_2;
+        }
+    })
+})
 
-function fop(res) {
-  instrument="";
-  operator.forEach((oper) => {
-    oper.addEventListener("click", () => {
-      const clickedOp = oper.textContent;
-      if (clickedOp === "+") {
-        instrument = "+";
-      } else if (clickedOp === "-") {
-        instrument = "-";
-      } else if (clickedOp === "x") {
-        instrument = "*";
-      } else {
-        instrument = "/";
-      }
-      fnum2(res);
-    });
-  });
-}
+// checking the operator
+operator.forEach((op)=>{
+    op.addEventListener("click",()=>{
+        operator_1=op.textContent;
+    })
+})
 
-function fnum2(res) {
-  str2="";
-  str="";
-  num2.forEach((n2) => {
-    n2.addEventListener("click", () => {
-      const clickedNum = n2.textContent;
-      str2 = str2 + clickedNum;
-      res2 = parseFloat(str2);
-      result=res2;
-      result.innerText = res2;
-    });
-  });
-  equal.addEventListener("click", () => {
-    if (instrument === "+") {
-      console.log(res);
-      // console.log()
-      result.innerText = res + res2;
-    } else if (instrument === "-") {
-      result.innerText = res - res2;
-    } else if (instrument === "*") {
-      result.innerText = res * res2;
-    } else if (instrument === "/") {
-      result.innerText = res / res2;
+// equal to event
+equal.addEventListener("click",()=>{
+    n1=parseFloat(num_1).toFixed(3);
+    n2=parseFloat(num_2).toFixed(3);
+    if(operator_1==="+"){
+        result.innerText=num_1+num_2;
     }
-  });
-}
+    else if(operator_1==="-"){
+        result.innerText=num_1-num_2;
+    }
+    else if(operator_1==="x"){
+        result.innerText=num_1*num_2;
+    }
+    else{
+        result.innerText=num_1/num_2;
+    }
+    
+})
 
+// setting the clear option
+c.addEventListener("click",()=>{
+    num_1="";
+    num_2="";
+    operator_1=null;
+    result.innerText=0.;
+})
 
-
-c.addEventListener("click", () => {
-  res = 0;
-  res2 = 0;
-  str="";
-  str2="";
-  // result=0;
-
-  result.innerText = 0;
-  fnum1();
-});
