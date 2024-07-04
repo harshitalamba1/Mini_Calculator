@@ -1,4 +1,5 @@
-![image](https://github.com/harshitalamba1/Mini_Calculator/assets/156739620/e01dcdbb-96c9-4266-81b3-857f793dcaa8)
+![image](https://github.com/harshitalamba1/Mini_Calculator/assets/156739620/f3b14076-d899-4415-ad85-dcfb216a67d8)
+
 # Mini Calculator
 
 This project is a simple, elegant, and intuitive calculator built with HTML, CSS, and JavaScript. It supports basic arithmetic operations such as addition, subtraction, multiplication, and division. This calculator is designed to be responsive, providing a seamless experience on both desktop and mobile devices.
